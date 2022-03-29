@@ -16,9 +16,6 @@ var chart = Highcharts.chart('chart', {
   title: {
     text: 'Results'
   },
-  subtitle: {
-    text: 'Subtitle text'
-  },
   yAxis: {
     text: 'Time interval in seconds'
   },
@@ -55,6 +52,9 @@ var chart = Highcharts.chart('chart', {
         }
       }
     }]
+  },
+  credits: {
+    enabled: false
   }
 });
 
@@ -105,10 +105,10 @@ function newAttempt() {
 
     chart.series[0].addPoint([index, difference / 1000]);
 
-    let startTime = new Date(start).getTime();
-    let endTime = new Date(end).getTime();
+    let startTime = new Date(start).toString();
+    let endTime = new Date(end).toString();
 
-    $("#resultTableBody").append("<tr><th scope='row'>" + index + "</th><td>" + startTime + "</td><td>" + endTime + "</td><td>" + difference + "</td></tr>");
+    $("#resultTableBody").append("<tr><th scope='row'>" + index + "</th><td>" + startTime + "</td><td>" + endTime + "</td><td>" + difference + " ms</td></tr>");
 
     results.push(difference);
 
