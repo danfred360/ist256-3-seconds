@@ -9,8 +9,8 @@
     </head>
     <body>
         <div class="container text-center">
-            <h1>Directions</h1>
-            <p>Press start and stop when you think three seconds have gone by.</p>
+            <h1>3 Second Game</h1>
+            <p>Try to leave a three second interval between pressing start and stop.</p>
         </div>
         <div class="container text-center">
             <button type="button" class="btn btn-success" id="button" onClick="newAttempt()">Start</button>
@@ -24,9 +24,6 @@
             </button>
             <div class="collapse" id="moreInfo">
                 <div class="card card-body">
-                    A summary of each attempt's result. (attempt number, start time and stop time)
-                    A summary of the results (total attempts, min, max, avg)
-
                     <p id="totalInfo"></p>
                     <table class="table" id="resultTable">
                     <thead>
@@ -37,14 +34,7 @@
                         <th scope="col">Difference</th>
                         </tr>
                     </thead>
-                    <tbody id="resultTableBody">
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        </tr>
-                        <tr>
-                    </tbody>
+                    <tbody id="resultTableBody"></tbody>
                     </table>
                 </div>
               </div>
