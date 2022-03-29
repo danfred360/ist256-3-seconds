@@ -1,9 +1,15 @@
 let end;
 let start;
 
+let minimum;
+let maximum;
+let average;
+
 let index = 1;
 
 const limit = 3000; // 3 seconds in milliseconds
+
+let results = [];
 
 var chart = Highcharts.chart('chart', {
   title: {
@@ -16,9 +22,7 @@ var chart = Highcharts.chart('chart', {
     text: 'Time interval in seconds'
   },
   xAxis: {
-    accessibility: {
-      rangeDescription: 'foo'
-    }
+    tickInterval: 1
   },
   legend: {
     layout: 'vertical',
@@ -53,7 +57,6 @@ var chart = Highcharts.chart('chart', {
   }
 });
 
-//Highcharts.chart('chart', chart);
 
 function newAttempt() {
   if (button.innerHTML == "Start") {
@@ -85,16 +88,30 @@ function newAttempt() {
             break;
     }
 
-    attempt = document.createElement("li");
-    text = document.createTextNode(difference / 1000);
-    attempt.appendChild(text);
-
-    document.getElementById('resultsList').appendChild(attempt);
-
     chart.series[0].addPoint([index, difference / 1000]);
+
+    document.getElementById('resultTableBody').append("<tr><th scope='row'>" + index + "</th><td>" + start + "</td><td>" + end + "</td><td>" + difference + "</td></tr>");
+
+    results.push(difference);
+
+    if (difference < minimum) {
+      minimum = difference;
+    }
+
+    if (difference > maximum) {
+      maximum = difference;
+    }
+
+    let sum;
+
+    for (var i = 0; i < results.length; i++) {
+      sum += i;
+    }
+
+    average = sum / index;
+
+    $("#totalInfo").text("Min: " + minimum + " - Max: " + maximum + " - Average: " + average);
+
     index += 1;
-
-
-    //attempts.push({'timeAttempted': start, 'result': timeElapsed});
   }
 }
