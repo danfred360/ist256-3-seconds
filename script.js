@@ -1,9 +1,59 @@
 let end;
 let start;
 
-let attempts = [];
+let index = 1;
 
 const limit = 3000; // 3 seconds in milliseconds
+
+var chart = Highcharts.chart('chart', {
+  title: {
+    text: 'Results'
+  },
+  subtitle: {
+    text: 'Subtitle text'
+  },
+  yAxis: {
+    text: 'Time interval in seconds'
+  },
+  xAxis: {
+    accessibility: {
+      rangeDescription: 'foo'
+    }
+  },
+  legend: {
+    layout: 'vertical',
+    align: 'right',
+    verticalAlign: 'middle'
+  },
+  plotOptions: {
+    series: {
+      label: {
+        connectorAllowed: false
+      },
+      pointStart: 0
+    }
+  },
+  series: [{
+    name: 'Attempts',
+    data: []
+  }],
+  responsive: {
+    rules: [{
+      condition: {
+        maxWidth: 500
+      },
+      chartOptions: {
+        legend: {
+          layout: 'horizontal',
+          align: 'center',
+          verticalAlign: 'bottom'
+        }
+      }
+    }]
+  }
+});
+
+//Highcharts.chart('chart', chart);
 
 function newAttempt() {
   if (button.innerHTML == "Start") {
@@ -36,10 +86,13 @@ function newAttempt() {
     }
 
     attempt = document.createElement("li");
-    text = document.createTextNode(difference);
+    text = document.createTextNode(difference / 1000);
     attempt.appendChild(text);
 
     document.getElementById('resultsList').appendChild(attempt);
+
+    chart.series[0].addPoint([index, difference / 1000]);
+    index += 1;
 
 
     //attempts.push({'timeAttempted': start, 'result': timeElapsed});
