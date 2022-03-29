@@ -17,7 +17,7 @@ var chart = Highcharts.chart('chart', {
     text: 'Results'
   },
   yAxis: {
-    text: 'Time interval in seconds'
+    text: 'Time interval in ms'
   },
   xAxis: {
     tickInterval: 1
@@ -124,7 +124,7 @@ function newAttempt() {
 
     average = sum / index;
 
-    $("#totalInfo").text("Min: " + minimum / 1000 + " - Max: " + maximum / 1000 + " - Average: " + average / 1000 + " - Total Attempts: " + index);
+    $("#totalInfo").text("Min: " + minimum / 1000 + " seconds - Max: " + maximum / 1000 + " seconds - Average: " + average / 1000 + " seconds - Total Attempts: " + index);
 
     $("#resultTarget").text("Difference: " + difference + " ms")
 
