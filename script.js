@@ -69,7 +69,6 @@ function newAttempt() {
     let timeElapsed = (end - start);
     
     let difference = Math.abs(limit - timeElapsed);
-    console.log(difference + " ------------------ ");
 
     switch(true) {
         case (difference == 0):
@@ -77,35 +76,30 @@ function newAttempt() {
             $("#button").removeClass("btn-warning");
             $("#button").removeClass("btn-primary");
             $("#button").addClass("btn-success");
-            console.log("green " + difference);
             break;
         case (0 < difference && difference < 200):
             $("#button").removeClass("btn-danger");
             $("#button").removeClass("btn-warning");
             $("#button").addClass("btn-primary");
             $("#button").removeClass("btn-success");
-            console.log("blue " + difference);
             break;
         case (200 < difference && difference < 500):
             $("#button").removeClass("btn-danger");
             $("#button").addClass("btn-warning");
             $("#button").removeClass("btn-primary");
             $("#button").removeClass("btn-success");
-            console.log("yellow " + difference);
             break;
         case (difference >= 500):
             $("#button").addClass("btn-danger");
             $("#button").removeClass("btn-warning");
             $("#button").removeClass("btn-primary");
             $("#button").removeClass("btn-success");
-            console.log("red " + difference);
             break;
         default:
             $("#button").addClass("btn-danger");
             $("#button").removeClass("btn-warning");
             $("#button").removeClass("btn-primary");
             $("#button").removeClass("btn-success");
-            console.log("red " + difference);
             break;
     }
 
@@ -131,6 +125,8 @@ function newAttempt() {
     average = sum / index;
 
     $("#totalInfo").text("Min: " + minimum / 1000 + " - Max: " + maximum / 1000 + " - Average: " + average / 1000 + " - Total Attempts: " + index);
+
+    $("#resultTarget").text("Difference: " + difference + " ms")
 
     index += 1;
   }
